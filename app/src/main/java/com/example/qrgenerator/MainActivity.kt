@@ -21,9 +21,5 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        btn = findViewById(R.id.btn)
-        btn.setOnClickListener {
-            var intent = startActivity(Intent(this, ScannerActivity::class.java))
-        }
     }
 }
