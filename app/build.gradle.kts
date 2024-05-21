@@ -33,10 +33,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -46,5 +48,16 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.zxing.v172)
+    // for bottom navbar
+    implementation(libs.design)
+
+    // for barcode scanning
+    implementation(libs.zxing.v172) // old
+    implementation(libs.barcode.scanning) // new (ML Kit from google)
+
+    // to generate qr code
+//    implementation(libs.qrgenerator) could not find
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("androidx.multidex:multidex:2.0.1")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.2")
 }
