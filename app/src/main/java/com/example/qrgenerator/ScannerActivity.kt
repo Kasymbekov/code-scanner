@@ -1,5 +1,8 @@
 package com.example.qrgenerator
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -38,10 +41,11 @@ class ScannerActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(result: Result?) {
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         Log.v("MyLog", result!!.text)
         Log.v("MyLog", result.barcodeFormat.toString())
-        Toast.makeText(this, result.text, Toast.LENGTH_SHORT).show()
-        Toast.makeText(this, result.barcodeFormat.toString(), Toast.LENGTH_SHORT).show()
+        val clip: ClipData = ClipData.newPlainText("text", result.text)
+        clipboard.setPrimaryClip(clip)
         finish()
     }
 }
