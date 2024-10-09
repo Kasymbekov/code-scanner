@@ -1,15 +1,15 @@
-package com.example.qrgenerator
+package com.example.qrgenerator.ui.activities
 
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.qrgenerator.R
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 

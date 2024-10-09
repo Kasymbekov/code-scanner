@@ -1,4 +1,4 @@
-package com.example.qrgenerator.ui
+package com.example.qrgenerator.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
