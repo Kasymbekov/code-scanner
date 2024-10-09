@@ -1,8 +1,9 @@
 package com.example.qrgenerator.ui
 
+import android.R.attr.bitmap
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import com.example.qrgenerator.databinding.FragmentGeneratorBinding
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import java.io.File
+import java.io.FileOutputStream
 
 
 class GeneratorFragment : Fragment() {
@@ -24,7 +27,6 @@ class GeneratorFragment : Fragment() {
         binding = FragmentGeneratorBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,7 +42,20 @@ class GeneratorFragment : Fragment() {
             val barcodeEncoder = BarcodeEncoder()
             val bitmap = barcodeEncoder.createBitmap(bm)
             binding.ivBarcode.setImageBitmap(bitmap)
+
+            var outStream: FileOutputStream?
+            val sdCard = Environment.getExternalStorageDirectory()
+            val dir = File(sdCard.absolutePath + "/YourFolderName")
+            dir.mkdirs()
+            val fileName = String.format("%d.jpg", System.currentTimeMillis())
+            val outFile = File(dir, fileName)
+            outStream = FileOutputStream(outFile)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream)
+            outStream.flush()
+            outStream.close()
         }
+
+
 
     }
 
