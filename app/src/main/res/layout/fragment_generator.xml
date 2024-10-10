@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/bg_input"
         android:drawableStart="@drawable/text_icon"
         android:drawablePadding="16dp"
