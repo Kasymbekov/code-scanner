@@ -33,6 +33,7 @@ class GeneratorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnGenerate.setOnClickListener {
+            throw RuntimeException("код сломался") // Force a crash
             val multiFormatWriter = MultiFormatWriter()
             val bm = multiFormatWriter.encode(
                 binding.etInput.text.toString(),

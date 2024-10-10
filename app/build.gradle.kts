@@ -1,7 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-}
+
+    // the Google services Gradle plugin
+    id("com.google.gms.google-services")
+
+    // the Crashlytics Gradle plugin
+    id("com.google.firebase.crashlytics")
+}   
 
 android {
     namespace = "com.example.qrgenerator"
@@ -33,7 +39,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -56,8 +62,13 @@ dependencies {
     implementation(libs.barcode.scanning) // new (ML Kit from google)
 
     // to generate qr code
-//    implementation(libs.qrgenerator) could not find
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
     implementation("androidx.multidex:multidex:2.0.1")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.2")
+
+    // the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
+    // firebase libraries
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-crashlytics")
 }

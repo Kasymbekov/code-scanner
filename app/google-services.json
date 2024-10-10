@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "473281696502",
+    "project_id": "codescanner-c2167",
+    "storage_bucket": "codescanner-c2167.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473281696502:android:486bf1cf171e7cffac52d7",
+        "android_client_info": {
+          "package_name": "com.example.qrgenerator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkHpFIgI3Y3Sl5XSV05X12ih7U8UYrqRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
