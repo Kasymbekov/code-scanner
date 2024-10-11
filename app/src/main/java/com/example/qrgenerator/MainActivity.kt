@@ -3,6 +3,8 @@ package com.example.qrgenerator
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -52,6 +54,9 @@ class MainActivity : AppCompatActivity() {
             }
         requestPermissionLauncher.launch(
             Manifest.permission.CAMERA)
+
+
+
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
