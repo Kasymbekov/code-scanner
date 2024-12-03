@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">QrGenerator</string>
+    <string name="app_name" translatable="false">QrGenerator</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="gen_input">Type here...</string>
     <string name="gen_img">Barcode</string>
     <string name="gen_btn">generate</string>
+    <string name="gen">Generator</string>
+    <string name="scan">Scanner</string>
+    <string name="fav">Favorites</string>
 </resources>
