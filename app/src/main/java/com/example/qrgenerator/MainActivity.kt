@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        Toast.makeText(this, this.javaClass.name, Toast.LENGTH_LONG).show()
+
         // request permission for camera
         val requestPermissionLauncher =
             this.registerForActivityResult(
