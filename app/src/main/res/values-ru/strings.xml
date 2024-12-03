@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QrGenerator</string>
+    <string name="gen_input">Введите текст</string>
+    <string name="gen_img">Баркод</string>
+    <string name="gen_btn">Сгенерировать</string>
+    <string name="gen">Генератор</string>
+    <string name="scan">Сканер</string>
+    <string name="fav">Избранное</string>
+</resources>
