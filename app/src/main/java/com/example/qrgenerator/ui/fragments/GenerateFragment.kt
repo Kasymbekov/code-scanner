@@ -17,7 +17,7 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 
 
-class GeneratorFragment : Fragment() {
+class GenerateFragment : Fragment() {
     private lateinit var binding: FragmentGeneratorBinding
 
     override fun onCreateView(
@@ -44,7 +44,7 @@ class GeneratorFragment : Fragment() {
             val bitmap = barcodeEncoder.createBitmap(bm)
             binding.ivBarcode.setImageBitmap(bitmap)
 
-            saveImageToDownloadFolder("pdf.png", bitmap)
+            saveImageToDownloadFolder("pdf1.png", bitmap)
         }
     }
 

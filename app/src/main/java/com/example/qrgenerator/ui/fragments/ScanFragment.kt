@@ -5,11 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.FragmentScannerBinding
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
-class ScannerFragment : Fragment() {
+class ScanFragment : Fragment() {
     private lateinit var binding: FragmentScannerBinding
     private lateinit var scannerView: ZXingScannerView
     override fun onCreateView(
