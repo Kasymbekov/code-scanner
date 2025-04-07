@@ -1,8 +1,7 @@
-package com.example.qrgenerator.ui.activities
+package com.example.qrgenerator.ui.scanner
 
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -41,7 +40,7 @@ class ScannerActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(result: Result?) {
-        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipboard = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
         Log.v("MyLog", result!!.text)
         Log.v("MyLog", result.barcodeFormat.toString())
         val clip: ClipData = ClipData.newPlainText("text", result.text)

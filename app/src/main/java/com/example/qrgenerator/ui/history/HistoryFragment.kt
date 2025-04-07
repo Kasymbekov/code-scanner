@@ -1,23 +1,26 @@
-package com.example.qrgenerator.ui.fragments
+package com.example.qrgenerator.ui.history
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.qrgenerator.databinding.FragmentProfileBinding
+import com.example.qrgenerator.ui.main.MainViewModel
 
-class ProfileFragment : Fragment() {
+class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: HistoryViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfileBinding.inflate(layoutInflater)
-        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[HistoryViewModel::class.java]
         return binding.root
     }
 
@@ -27,7 +30,7 @@ class ProfileFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.liveData.observe(this, Observer{
+        viewModel.liveData.observe(this, Observer {
             binding.tv.text = it
         })
     }

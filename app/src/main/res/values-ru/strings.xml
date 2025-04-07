@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QR сканер</string>
+    <string name="app_name">QR генератор</string>
     <string name="gen_input">Введите текст</string>
     <string name="gen_img">Баркод</string>
     <string name="gen_btn">Сгенерировать</string>
     <string name="gen">Генератор</string>
     <string name="scan">Сканер</string>
-    <string name="profile">Профиль</string>
+    <string name="history">История</string>
 </resources>

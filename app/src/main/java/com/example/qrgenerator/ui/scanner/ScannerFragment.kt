@@ -1,14 +1,14 @@
-package com.example.qrgenerator.ui.fragments
+package com.example.qrgenerator.ui.scanner
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.qrgenerator.databinding.FragmentScannerBinding
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
-class ScanFragment : Fragment() {
+class ScannerFragment : Fragment() {
     private lateinit var binding: FragmentScannerBinding
     private lateinit var scannerView: ZXingScannerView
     override fun onCreateView(

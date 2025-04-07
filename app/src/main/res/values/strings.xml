@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">QrGenerator</string>
+    <string name="app_name">QrGenerator</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Profile fragment</string>
     <string name="gen_input">Type here...</string>
@@ -7,5 +7,5 @@
     <string name="gen_btn">generate</string>
     <string name="gen">Generate</string>
     <string name="scan">Scan</string>
-    <string name="profile">Profile</string>
+    <string name="history">History</string>
 </resources>

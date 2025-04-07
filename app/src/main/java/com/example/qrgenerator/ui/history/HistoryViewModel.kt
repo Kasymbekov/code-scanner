@@ -1,15 +1,16 @@
-package com.example.qrgenerator.ui.fragments
+package com.example.qrgenerator.ui.history
 
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MainViewModel: ViewModel() {
+class HistoryViewModel: ViewModel() {
     val liveData = MutableLiveData<String>()
 
     init {
         startTimer()
+        liveData.value = "777"
         Log.e("nurs", "VM is created")
     }
 
@@ -20,9 +21,8 @@ class MainViewModel: ViewModel() {
             }
 
             override fun onFinish() {
-
+                liveData.value = "777"
             }
-
         }.start()
     }
 }
