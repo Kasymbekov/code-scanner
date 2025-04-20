@@ -1,25 +1,23 @@
 package com.example.qrgenerator.ui.generator
 
-import android.graphics.Bitmap
 import android.os.Bundle
-import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.FragmentGeneratorBinding
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.MultiFormatWriter
-import com.journeyapps.barcodescanner.BarcodeEncoder
-import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
 
 class GeneratorFragment : Fragment() {
     private lateinit var binding: FragmentGeneratorBinding
     private lateinit var viewModel: GeneratorViewModel
+
+    init {
+        Log.e("AMG", "GeneratorFragment created()")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,13 +33,21 @@ class GeneratorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnGenerate.setOnClickListener {
-            val input = binding.etInput.text.toString()
-            val bitmap = viewModel.generateCode(input = input)
+            val editText = binding.etInput.text
+            val bitmap = viewModel.generateCode(input = editText.toString())
             binding.ivBarcode.setImageBitmap(bitmap)
-            viewModel.saveImageToDownloadFolder("pdf1.png", bitmap, requireContext())
+            viewModel.saveImageToDownloadFolder(bitmap, requireContext())
+            editText.clear()
         }
-    }
 
+//        view.postDelayed(
+//            {
+//                findNavController().navigate(
+//                    R.id.action_generatorFragment_to_historyFragment
+//                )
+//            }, 2000
+//        )
+    }
 
 
 }

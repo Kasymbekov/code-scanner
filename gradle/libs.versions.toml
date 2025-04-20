@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.0"
+agp = "8.9.0"
 androidxMultidex = "2.0.1"
 barcodeScanning = "17.2.0"
 design = "28.0.0"
@@ -12,6 +12,7 @@ appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+navigation = "2.8.9"
 qrgenerator = "1.0.1"
 zxing = "1.9.13"
 zxingAndroidEmbedded = "3.3.0"
@@ -20,6 +21,8 @@ zxingVersion = "1.7.2"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-multidex = { module = "androidx.multidex:multidex", version.ref = "androidxMultidex" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 barcode-scanning = { module = "com.google.mlkit:barcode-scanning", version.ref = "barcodeScanning" }
 design = { module = "com.android.support:design", version.ref = "design" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

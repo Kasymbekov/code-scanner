@@ -8,15 +8,23 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.ActivityMainBinding
 import com.example.qrgenerator.ui.scanner.ScannerActivity
 import com.example.qrgenerator.ui.generator.GeneratorFragment
 import com.example.qrgenerator.ui.history.HistoryFragment
 import com.example.qrgenerator.ui.scanner.ScannerFragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val navController by lazy {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_host_main) as NavHostFragment
+        navHostFragment.navController
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,21 +34,14 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val generatorFragment = GeneratorFragment()
-        val scannerFragment = ScannerFragment()
-        val historyFragment = HistoryFragment()
-        setCurrentFragment(generatorFragment)
-
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.scan -> startActivity(Intent(this, ScannerActivity::class.java))
-                R.id.generate -> setCurrentFragment(generatorFragment)
-                R.id.history -> setCurrentFragment(historyFragment)
+                R.id.generate -> navController.navigate(R.id.generatorFragment)
+                R.id.history -> navController.navigate(R.id.historyFragment)
             }
             true
         }
-
-        Toast.makeText(this, this.javaClass.name, Toast.LENGTH_LONG).show()
 
         // request permission for camera
         val requestPermissionLauncher =
@@ -48,18 +49,11 @@ class MainActivity : AppCompatActivity() {
                 ActivityResultContracts.RequestPermission()
             ) { isGranted: Boolean ->
                 if (isGranted) {
-                    Toast.makeText(this, "permission granted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "camera permission granted", Toast.LENGTH_SHORT).show()
                 }
             }
         requestPermissionLauncher.launch(
             Manifest.permission.CAMERA
         )
-    }
-
-    private fun setCurrentFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment, fragment)
-            commit()
-        }
     }
 }

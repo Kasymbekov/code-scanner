@@ -9,9 +9,9 @@ class HistoryViewModel: ViewModel() {
     val liveData = MutableLiveData<String>()
 
     init {
-        startTimer()
+        // startTimer()
         liveData.value = "777"
-        Log.e("nurs", "VM is created")
+        Log.e("AMG", "VM is created")
     }
 
     private fun startTimer() {
