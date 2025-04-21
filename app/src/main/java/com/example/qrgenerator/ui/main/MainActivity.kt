@@ -1,12 +1,18 @@
 package com.example.qrgenerator.ui.main
 
 import android.Manifest
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.animation.doOnEnd
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.qrgenerator.R
@@ -18,6 +24,7 @@ import com.example.qrgenerator.ui.scanner.ScannerFragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -27,6 +34,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // init splashscreen before init UI
+        val splashScreen = installSplashScreen()
+        installSplashScreen().setOnExitAnimationListener { splashScreenViewProvider ->
+            val view = splashScreenViewProvider.iconView
+            val scaleUp = ObjectAnimator.ofPropertyValuesHolder(
+                view,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 1.2f, 1f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 1.2f, 1f)
+            ).apply {
+                duration = 600
+                interpolator = AccelerateDecelerateInterpolator()
+                doOnEnd {
+                    splashScreenViewProvider.remove()
+                }
+            }
+            scaleUp.start()
+        }
+
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 

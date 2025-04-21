@@ -80,4 +80,7 @@ dependencies {
     // Views/Fragments integration
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    // SplashScreen API
+    implementation("androidx.core:core-splashscreen:1.0.0")
 }

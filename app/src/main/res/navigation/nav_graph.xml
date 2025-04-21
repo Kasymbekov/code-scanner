@@ -24,4 +24,8 @@
         android:name="com.example.qrgenerator.ui.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.qrgenerator.ui.splashscreen.SplashScreenFragment"
+        android:label="SplashScreenFragment" />
 </navigation>

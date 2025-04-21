@@ -7,7 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.FragmentHistoryBinding
+import com.example.qrgenerator.databinding.FragmentSplashscreenBinding
+import com.example.qrgenerator.ui.splashscreen.SplashScreenViewModel
 
 class HistoryFragment : Fragment() {
     private lateinit var binding: FragmentHistoryBinding
