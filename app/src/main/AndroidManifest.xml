@@ -25,7 +25,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_qrscan_round"
         android:supportsRtl="true"
-        android:theme="@style/Base.Theme.QrGenerator"
+        android:theme="@style/Base.Theme.QrGenerator.Light"
         tools:targetApi="31">
         <activity
             android:name=".ui.scanner.ScannerActivity"

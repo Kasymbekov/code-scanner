@@ -4,8 +4,10 @@ import android.Manifest
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.qrgenerator.R
@@ -30,15 +33,13 @@ import kotlinx.coroutines.delay
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val navController by lazy {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_host_main) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragment_host_main) as NavHostFragment
         navHostFragment.navController
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // default night mode in entry point
-
         // init splashscreen before init UI
-        val splashScreen = installSplashScreen()
         installSplashScreen().setOnExitAnimationListener { splashScreenViewProvider ->
             val view = splashScreenViewProvider.iconView
             val scaleUp = ObjectAnimator.ofPropertyValuesHolder(
@@ -55,9 +56,12 @@ class MainActivity : AppCompatActivity() {
             scaleUp.start()
         }
 
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // transparent systembars
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.navigationBarColor = Color.TRANSPARENT
+        window.statusBarColor = Color.TRANSPARENT
 
+        super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
