@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // default night mode in entry point
+
         // init splashscreen before init UI
         val splashScreen = installSplashScreen()
         installSplashScreen().setOnExitAnimationListener { splashScreenViewProvider ->
@@ -51,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             }
             scaleUp.start()
         }
-
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

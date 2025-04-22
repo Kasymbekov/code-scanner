@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/scan"
-        android:icon="@drawable/ic_qrscan_foreground"
+        android:icon="@drawable/qr_code_scanner_24dp"
         android:title="@string/scan" />
     <item
         android:id="@+id/generate"
-        android:icon="@drawable/ic_qrscan_foreground"
+        android:icon="@drawable/qr_code_2_add_24dp"
         android:title="@string/gen" />
     <item
         android:id="@+id/history"
-        android:icon="@drawable/ic_qrscan_foreground"
+        android:icon="@drawable/history_24dp"
         android:title="@string/history" />
 </menu>

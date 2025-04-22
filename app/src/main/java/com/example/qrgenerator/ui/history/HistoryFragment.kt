@@ -1,5 +1,6 @@
 package com.example.qrgenerator.ui.history
 
+import android.app.WallpaperManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,5 +35,6 @@ class HistoryFragment : Fragment() {
         viewModel.liveData.observe(this, Observer {
             binding.tv.text = it
         })
+//        val wallpaperDrawable = WallpaperManager.getInstance(this).drawable
     }
 }
