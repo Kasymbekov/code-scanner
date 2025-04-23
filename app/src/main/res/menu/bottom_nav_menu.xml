@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/scan"
+        android:id="@+id/scannerFragment"
         android:icon="@drawable/qr_code_scanner_24dp"
         android:title="@string/scan" />
     <item
-        android:id="@+id/generate"
+        android:id="@+id/generatorFragment"
         android:icon="@drawable/qr_code_2_add_24dp"
         android:title="@string/gen" />
     <item
-        android:id="@+id/history"
+        android:id="@+id/historyFragment"
         android:icon="@drawable/history_24dp"
         android:title="@string/history" />
 </menu>

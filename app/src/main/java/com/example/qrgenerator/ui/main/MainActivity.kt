@@ -28,6 +28,7 @@ import com.example.qrgenerator.ui.scanner.ScannerFragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             scaleUp.start()
         }
 
-        // transparent systembars
+        // transparent system bars
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.navigationBarColor = Color.TRANSPARENT
         window.statusBarColor = Color.TRANSPARENT
@@ -66,11 +67,13 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.bottomNavView.setupWithNavController(navController) // to sync with bottom nav
+
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.scan -> startActivity(Intent(this, ScannerActivity::class.java))
-                R.id.generate -> navController.navigate(R.id.generatorFragment)
-                R.id.history -> navController.navigate(R.id.historyFragment)
+                R.id.scannerFragment -> startActivity(Intent(this, ScannerActivity::class.java))
+                R.id.generatorFragment -> navController.navigate(R.id.generatorFragment)
+                R.id.historyFragment -> navController.navigate(R.id.historyFragment)
             }
             true
         }
