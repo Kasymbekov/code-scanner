@@ -21,7 +21,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.ActivityMainBinding
-import com.example.qrgenerator.ui.scanner.ScannerActivity
 import com.example.qrgenerator.ui.generator.GeneratorFragment
 import com.example.qrgenerator.ui.history.HistoryFragment
 import com.example.qrgenerator.ui.scanner.ScannerFragment
@@ -71,7 +70,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.scannerFragment -> startActivity(Intent(this, ScannerActivity::class.java))
+//                R.id.scannerFragment -> startActivity(Intent(this, ScannerActivity::class.java))
+                R.id.scannerFragment -> navController.navigate(R.id.scannerFragment)
                 R.id.generatorFragment -> navController.navigate(R.id.generatorFragment)
                 R.id.historyFragment -> navController.navigate(R.id.historyFragment)
             }

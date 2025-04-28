@@ -28,10 +28,6 @@
         android:theme="@style/Base.Theme.QrGenerator.Light"
         tools:targetApi="31">
         <activity
-            android:name=".ui.scanner.ScannerActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
             android:theme="@style/Base.Theme.QrGenerator.Splash"
