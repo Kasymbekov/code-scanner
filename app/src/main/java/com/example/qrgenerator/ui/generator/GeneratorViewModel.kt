@@ -48,7 +48,7 @@ class GeneratorViewModel() : ViewModel() {
             outputStream.close()
             Toast.makeText(
                 context,
-                "Successfully saved in Download Folder",
+                "Successfully saved in Pictures Folder",
                 Toast.LENGTH_SHORT
             ).show()
         } catch (e: Exception) {

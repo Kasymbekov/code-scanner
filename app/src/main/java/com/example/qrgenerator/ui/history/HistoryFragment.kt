@@ -14,14 +14,15 @@ import com.example.qrgenerator.databinding.FragmentSplashscreenBinding
 import com.example.qrgenerator.ui.splashscreen.SplashScreenViewModel
 
 class HistoryFragment : Fragment() {
-    private lateinit var binding: FragmentHistoryBinding
+    private var _binding: FragmentHistoryBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: HistoryViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHistoryBinding.inflate(layoutInflater)
+        _binding = FragmentHistoryBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(requireActivity())[HistoryViewModel::class.java]
         return binding.root
     }
@@ -35,6 +36,10 @@ class HistoryFragment : Fragment() {
         viewModel.liveData.observe(this, Observer {
             binding.tv.text = it
         })
-//        val wallpaperDrawable = WallpaperManager.getInstance(this).drawable
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

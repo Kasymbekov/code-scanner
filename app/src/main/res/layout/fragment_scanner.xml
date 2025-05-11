@@ -3,14 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
     tools:context=".ui.scanner.ScannerFragment">
 
-    <TextView
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Scanner fragment"
-        android:textColor="@color/blue"
-        android:textSize="50sp" />
+        android:layout_height="match_parent"/>
 
 </FrameLayout>

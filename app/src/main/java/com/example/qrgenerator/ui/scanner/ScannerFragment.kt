@@ -9,36 +9,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.qrgenerator.databinding.FragmentScannerBinding
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
 class ScannerFragment : Fragment(), ZXingScannerView.ResultHandler {
-    private lateinit var binding: FragmentScannerBinding
-    private lateinit var scannerView: ZXingScannerView
+    private var _binding: FragmentScannerBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: ScannerViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        scannerView = ZXingScannerView(requireContext())
-        binding = FragmentScannerBinding.inflate(inflater, container, false)
-        return scannerView
+        _binding = FragmentScannerBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        scannerView.setResultHandler(this)
-        scannerView.startCamera()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        scannerView.stopCamera()
+        viewModel.startCamera(
+            requireContext(),
+            binding.previewView.surfaceProvider,
+            viewLifecycleOwner
+        ) // нужен рефакторинг
     }
 
     override fun handleResult(result: Result?) {
@@ -49,4 +44,8 @@ class ScannerFragment : Fragment(), ZXingScannerView.ResultHandler {
         clipboard.setPrimaryClip(clip)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

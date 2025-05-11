@@ -7,7 +7,7 @@ plugins {
 
     // the Crashlytics Gradle plugin
     id("com.google.firebase.crashlytics")
-}   
+}
 
 android {
     namespace = "com.example.qrgenerator"
@@ -58,8 +58,8 @@ dependencies {
     implementation(libs.design)
 
     // for barcode scanning
-    implementation(libs.zxing.v172) // old
-    implementation(libs.barcode.scanning) // new (ML Kit from google)
+    implementation(libs.zxing.v172) // old (Zxing by google)
+    implementation(libs.barcode.scanning) // new (ML Kit by google)
 
     // to generate qr code
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
@@ -83,4 +83,14 @@ dependencies {
 
     // SplashScreen API
     implementation("androidx.core:core-splashscreen:1.0.0")
+
+    // CameraX library
+    val camerax_version = "1.2.2"
+    implementation("androidx.camera:camera-core:${camerax_version}")
+    implementation("androidx.camera:camera-camera2:${camerax_version}")
+    implementation("androidx.camera:camera-lifecycle:${camerax_version}")
+    implementation("androidx.camera:camera-video:${camerax_version}")
+
+    implementation("androidx.camera:camera-view:${camerax_version}")
+    implementation("androidx.camera:camera-extensions:${camerax_version}")
 }

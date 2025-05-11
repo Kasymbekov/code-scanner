@@ -12,19 +12,16 @@ import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.FragmentGeneratorBinding
 
 class GeneratorFragment : Fragment() {
-    private lateinit var binding: FragmentGeneratorBinding
+    private var _binding: FragmentGeneratorBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: GeneratorViewModel
-
-    init {
-        Log.e("AMG", "GeneratorFragment created()")
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGeneratorBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentGeneratorBinding.inflate(layoutInflater, container, false)
         viewModel = ViewModelProvider(requireActivity())[GeneratorViewModel::class.java]
         return binding.root
     }
@@ -39,15 +36,10 @@ class GeneratorFragment : Fragment() {
             viewModel.saveImageToDownloadFolder(bitmap, requireContext())
             editText.clear()
         }
-
-//        view.postDelayed(
-//            {
-//                findNavController().navigate(
-//                    R.id.action_generatorFragment_to_historyFragment
-//                )
-//            }, 2000
-//        )
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // освобождаем привязку, чтобы избежать утечку памяти
+    }
 }
