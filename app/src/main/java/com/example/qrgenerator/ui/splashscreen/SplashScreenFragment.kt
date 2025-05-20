@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.FragmentSplashscreenBinding
+import com.example.qrgenerator.ui.splashscreen.SplashScreenViewModel
 
 class SplashScreenFragment: Fragment(R.layout.fragment_splashscreen){
-    private lateinit var binding: FragmentSplashscreenBinding
+    private var _binding: FragmentSplashscreenBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: SplashScreenViewModel
 
     override fun onCreateView(
@@ -18,12 +20,17 @@ class SplashScreenFragment: Fragment(R.layout.fragment_splashscreen){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSplashscreenBinding.inflate(layoutInflater)
+        _binding = FragmentSplashscreenBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(requireActivity())[SplashScreenViewModel::class.java]
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

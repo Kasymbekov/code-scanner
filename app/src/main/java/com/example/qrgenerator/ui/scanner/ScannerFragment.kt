@@ -2,7 +2,7 @@ package com.example.qrgenerator.ui.scanner
 
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.Context.CLIPBOARD_SERVICE
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.qrgenerator.databinding.FragmentScannerBinding
+import com.example.qrgenerator.ui.scanner.ScannerViewModel
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
@@ -37,7 +38,7 @@ class ScannerFragment : Fragment(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(result: Result?) {
-        val clipboard = requireContext().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+        val clipboard = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         Log.v("MyLog", result!!.text)
         Log.v("MyLog", result.barcodeFormat.toString())
         val clip: ClipData = ClipData.newPlainText("text", result.text)

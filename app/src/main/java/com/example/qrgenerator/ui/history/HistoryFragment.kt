@@ -1,6 +1,5 @@
 package com.example.qrgenerator.ui.history
 
-import android.app.WallpaperManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.FragmentHistoryBinding
-import com.example.qrgenerator.databinding.FragmentSplashscreenBinding
-import com.example.qrgenerator.ui.splashscreen.SplashScreenViewModel
+import com.example.qrgenerator.ui.history.HistoryViewModel
 
 class HistoryFragment : Fragment() {
     private var _binding: FragmentHistoryBinding? = null

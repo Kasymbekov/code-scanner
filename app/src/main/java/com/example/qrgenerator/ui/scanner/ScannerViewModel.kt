@@ -3,20 +3,20 @@ package com.example.qrgenerator.ui.scanner
 import android.content.Context
 import android.util.Log
 import androidx.annotation.OptIn
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModel
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.view.PreviewView
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 
 class ScannerViewModel : ViewModel() {
@@ -79,8 +79,8 @@ class ScannerViewModel : ViewModel() {
     private fun scanCode() { // нужен рефакторинг
         val options = BarcodeScannerOptions.Builder()
             .setBarcodeFormats(
-                com.google.mlkit.vision.barcode.common.Barcode.FORMAT_QR_CODE,
-                com.google.mlkit.vision.barcode.common.Barcode.FORMAT_AZTEC
+                Barcode.FORMAT_QR_CODE,
+                Barcode.FORMAT_AZTEC
             )
             .build()
     }

@@ -1,34 +1,22 @@
-package com.example.qrgenerator.ui.main
+package com.example.qrgenerator.ui
 
 import android.Manifest
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.view.Window
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
-import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.qrgenerator.R
 import com.example.qrgenerator.databinding.ActivityMainBinding
-import com.example.qrgenerator.ui.generator.GeneratorFragment
-import com.example.qrgenerator.ui.history.HistoryFragment
-import com.example.qrgenerator.ui.scanner.ScannerFragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
-import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -70,7 +58,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavView.setOnItemSelectedListener {
             when (it.itemId) {
-//                R.id.scannerFragment -> startActivity(Intent(this, ScannerActivity::class.java))
                 R.id.scannerFragment -> navController.navigate(R.id.scannerFragment)
                 R.id.generatorFragment -> navController.navigate(R.id.generatorFragment)
                 R.id.historyFragment -> navController.navigate(R.id.historyFragment)
