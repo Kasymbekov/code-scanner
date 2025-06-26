@@ -2,13 +2,13 @@ package com.example.qrgenerator.ui
 
 import android.Manifest
 import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -25,23 +25,40 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragment_host_main) as NavHostFragment
         navHostFragment.navController
     }
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // init splashscreen before init UI
-        installSplashScreen().setOnExitAnimationListener { splashScreenViewProvider ->
-            val view = splashScreenViewProvider.iconView
-            val scaleUp = ObjectAnimator.ofPropertyValuesHolder(
-                view,
-                PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 1.2f, 1f),
-                PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 1.2f, 1f)
-            ).apply {
-                duration = 600
-                interpolator = AccelerateDecelerateInterpolator()
-                doOnEnd {
-                    splashScreenViewProvider.remove()
-                }
+
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                viewModel.isLoading.value // in order to implement some operations in the background (auth, back-end)
             }
-            scaleUp.start()
+
+            // rotation, zoom animation
+            setOnExitAnimationListener { screen ->
+                val zoomX = ObjectAnimator.ofFloat(
+                    screen.iconView,
+                    View.SCALE_X,
+                    0.4f,
+                    0.0f
+                )
+                zoomX.interpolator = OvershootInterpolator()
+                zoomX.duration = 500L
+                zoomX.doOnEnd { screen.remove() }
+
+                val zoomY = ObjectAnimator.ofFloat(
+                    screen.iconView,
+                    View.SCALE_Y,
+                    0.4f,
+                    0.0f
+                )
+                zoomY.interpolator = OvershootInterpolator()
+                zoomY.duration = 500L
+                zoomY.doOnEnd { screen.remove() }
+
+                zoomX.start()
+                zoomY.start()
+            }
         }
 
         // transparent system bars
