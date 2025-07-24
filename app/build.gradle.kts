@@ -58,7 +58,6 @@ dependencies {
     implementation(libs.design)
 
     // for barcode scanning
-    implementation(libs.zxing.v172) // old (Zxing by google)
     implementation(libs.barcode.scanning) // new (ML Kit by google)
 
     // to generate qr code

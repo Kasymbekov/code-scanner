@@ -4,6 +4,7 @@ import android.Manifest
 import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
@@ -28,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         installSplashScreen().apply {
             setKeepOnScreenCondition {
                 viewModel.isLoading.value // in order to implement some operations in the background (auth, back-end)
